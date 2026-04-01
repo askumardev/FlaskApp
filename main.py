@@ -1,26 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def hello_world():
-    return render_template("index.html")
+   marks = {
+      "Math": 90,
+      "Science": 85,
+      "History": 92
+   }
+   return render_template("index.html", marks=marks)
 
-# @app.route("/")
-# def home():
-#     return render_template("home.html")
 
-# @app.route("/services")
-# def services():
-#     return render_template("services.html")
-
-# @app.route("/contact")
-# def contact():
-#     return render_template("contact.html")
-
-# @app.route("/about")
-# def about():
-#     return render_template("about.html")
-
-# app.run(debug=True)
 app.run(port=8000, debug=True)

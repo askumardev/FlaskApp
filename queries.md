@@ -2,6 +2,23 @@
 
 This reference shows common queries you can run from Flask routes or shell using SQLAlchemy models (`User`, `Post`, `Comment`).
 
+
+## Basic slask shell commands
+- to see all the table names
+```
+from sqlalchemy import inspect
+from app import db
+
+inspector = inspect(db.engine)
+inspector.get_table_names()
+```
+- to see the column names
+```
+for col in inspector.get_columns('category'):
+    print(col['name'], col['type'])
+```
+
+
 ## 1. Basic retrieval
 
 - `all()` - get all records

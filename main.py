@@ -6,7 +6,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 db.init_app(app)
 
-from models import User, Post, Comment
+from models import User, Post, Comment, Category
+from api import api_bp
+
+app.register_blueprint(api_bp)
 
 # @app.route("/", methods=["GET", "POST"])
 # def hello_world():
@@ -36,14 +39,32 @@ def populate():
 
     db.session.commit()
 
+    # category sample
+    cat_general = Category.query.filter_by(name='General').first()
+    if not cat_general:
+        cat_general = Category(name='General', description='General category')
+        db.session.add(cat_general)
+
+    cat_news = Category.query.filter_by(name='News').first()
+    if not cat_news:
+        cat_news = Category(name='News', description='Latest news updates')
+        db.session.add(cat_news)
+
+    cat_tutorial = Category.query.filter_by(name='Tutorial').first()
+    if not cat_tutorial:
+        cat_tutorial = Category(name='Tutorial', description='Tutorial and how-to guides')
+        db.session.add(cat_tutorial)
+
+    db.session.commit()
+
     post1 = Post.query.filter_by(title='First Post').first()
     if not post1:
-        post1 = Post(title='First Post', content='This is the first post.', user_id=user1.id)
+        post1 = Post(title='First Post', content='This is the first post.', user_id=user1.id, category_id=cat_general.id)
         db.session.add(post1)
 
     post2 = Post.query.filter_by(title='Second Post').first()
     if not post2:
-        post2 = Post(title='Second Post', content='This is the second post.', user_id=user2.id)
+        post2 = Post(title='Second Post', content='This is the second post.', user_id=user2.id, category_id=cat_general.id)
         db.session.add(post2)
 
     db.session.commit()
@@ -207,4 +228,14 @@ def comments_delete(id):
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
+        # Schema evolution: add post.category_id if missing
+        try:
+            db.session.execute('SELECT category_id FROM post LIMIT 1')
+        except Exception:
+            try:
+                db.session.execute('ALTER TABLE post ADD COLUMN category_id INTEGER')
+                db.session.commit()
+                print('Migrated: added category_id column to post')
+            except Exception as e:
+                print('Migration ignored (maybe already present or unsupported):', str(e))
     app.run(port=8000, debug=True)

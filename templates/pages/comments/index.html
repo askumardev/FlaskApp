@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>Comments</h1>
+<a href="{{ url_for('comments_new') }}">New Comment</a>
+<ul>
+  {% for comment in comments %}
+  <li>
+    <a href="{{ url_for('comments_show', id=comment.id) }}">{{ comment.content }}</a>
+    on <strong>{{ comment.post.title }}</strong> by {{ comment.commenter.username }}
+    <a href="{{ url_for('comments_edit', id=comment.id) }}">Edit</a>
+    <form method="post" action="{{ url_for('comments_delete', id=comment.id) }}" style="display:inline;">
+      <button type="submit" onclick="return confirm('Delete comment?')">Delete</button>
+    </form>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

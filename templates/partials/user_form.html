@@ -1,0 +1,11 @@
+<form method="post">
+  <div>
+    <label for="username">Username</label>
+    <input name="username" id="username" type="text" value="{{ user.username if user else '' }}" required>
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input name="email" id="email" type="email" value="{{ user.email if user else '' }}" required>
+  </div>
+  <button type="submit">{{ button_text }}</button>
+</form>

@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<p>Author: {{ post.author.username }}</p>
+<p>Comments: {{ post.comments|length }}</p>
+<hr>
+<h2>Comments</h2>
+{% if post.comments %}
+<ul>
+  {% for comment in post.comments %}
+  <li>
+    <strong>{{ comment.commenter.username }}:</strong> {{ comment.content }} <br>
+    <small>{{ comment.date_posted.strftime('%Y-%m-%d %H:%M') if comment.date_posted else '' }}</small>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No comments yet.</p>
+{% endif %}
+
+<a href="{{ url_for('comments_new') }}?post_id={{ post.id }}">Add Comment</a>
+<br><br>
+<a href="{{ url_for('posts_edit', id=post.id) }}">Edit</a>
+<a href="{{ url_for('posts_index') }}">Back to Posts</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+<form method="post">
+  <div>
+    <label for="content">Comment</label>
+    <textarea name="content" id="content" required>{{ comment.content if comment else '' }}</textarea>
+  </div>
+  <div>
+    <label for="post_id">Post</label>
+    <select name="post_id" id="post_id" required>
+      <option value="">Choose one</option>
+      {% for post in posts %}
+      <option value="{{ post.id }}" {% if comment and post.id == comment.post_id %}selected{% endif %}>{{ post.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+    <label for="user_id">Commenter</label>
+    <select name="user_id" id="user_id" required>
+      <option value="">Choose one</option>
+      {% for user in users %}
+      <option value="{{ user.id }}" {% if comment and user.id == comment.user_id %}selected{% endif %}>{{ user.username }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit">{{ button_text }}</button>
+</form>

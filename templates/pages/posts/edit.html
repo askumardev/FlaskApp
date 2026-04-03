@@ -1,0 +1,7 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>Edit Post</h1>
+{% include 'partials/post_form.html' with context %}
+<a href="{{ url_for('posts_index') }}">Back to Posts</a>
+{% endblock %}

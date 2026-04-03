@@ -1,0 +1,10 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>{{ user.username }}</h1>
+<p>Email: {{ user.email }}</p>
+<p>Posts: {{ user.posts|length }}</p>
+<p>Comments: {{ user.comments|length }}</p>
+<a href="{{ url_for('users_edit', id=user.id) }}">Edit</a>
+<a href="{{ url_for('users_index') }}">Back to users</a>
+{% endblock %}

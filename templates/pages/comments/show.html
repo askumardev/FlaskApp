@@ -1,0 +1,10 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>Comment Detail</h1>
+<p>{{ comment.content }}</p>
+<p>Post: {{ comment.post.title }}</p>
+<p>Commenter: {{ comment.commenter.username }}</p>
+<a href="{{ url_for('comments_edit', id=comment.id) }}">Edit</a>
+<a href="{{ url_for('comments_index') }}">Back to Comments</a>
+{% endblock %}

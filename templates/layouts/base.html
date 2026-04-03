@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Flask App</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"
+            defer></script>
+  </head>
+
+  <body>
+
+    {% include 'partials/header.html' %}
+
+    {% block content %}{% endblock %}
+
+    {% include 'partials/footer.html' %}
+
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>Edit User</h1>
+<form method="post">
+  <input type="text" name="username" value="{{ user.username }}" required>
+  <input type="email" name="email" value="{{ user.email }}" required>
+  <button type="submit">Update</button>
+</form>
+<a href="{{ url_for('users') }}">Back to Users</a>
+{% endblock %}

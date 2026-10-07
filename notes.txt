@@ -1,0 +1,14 @@
+In Flask, Jinja2 filters are functions that transform template variables before rendering.
+They are useful for formatting, transforming, or processing data directly in templates.
+
+1. Using Built-in Jinja Filters
+Jinja2 already provides many filters like:
+
+upper → converts text to uppercase
+lower → converts text to lowercase
+title → capitalizes each word
+safe → marks a string as safe HTML
+default → sets a default value if variable is undefined
+
+<p>{{ username|upper }}</p>
+<p>{{ bio|default("No bio available") }}</p>

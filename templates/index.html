@@ -1,8 +1,11 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-  <h2>Hello {{ name }}! Welcome to Home</h2>
+  <h2>{{"Hello " + name | upper}}! Welcome to Home</h2>
   <h3>Course: {{ course }}</h3>
+  <h4>Total Courses: {{courses | length}}</h4>
+  <p>{{10 * 5}}</p>
+  <p><strong>Current Time:</strong> {{ now }}</p>
   <!-- <nav>
     <a href="{{ url_for('users_index') }}">Users</a> |
     <a href="{{ url_for('posts_index') }}">Posts</a> |

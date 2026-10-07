@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from db import db
 from uuid import UUID
@@ -30,8 +31,10 @@ app.register_blueprint(api_bp)
 # in the template for rendering.
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
+    now = datetime.now()
     name = "Satish"
-    return render_template("index.html", name=name, course="Flask")
+    courses = ["Flask", "Django", "FastAPI"]
+    return render_template("index.html", name=name, course="Flask", now=now, courses=courses)
 
 @app.route('/populate')
 def populate():

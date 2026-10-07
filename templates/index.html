@@ -4,9 +4,14 @@
   <h2>{{"Hello " + name | upper}}! Welcome to Home</h2>
   <h3>Course: {{ course }}</h3>
   <h4>Total Courses: {{courses | length}}</h4>
-  <p>{{10 * 5}}</p>
-  <p><strong>Current Time:</strong> {{ now }}</p>
+  {% if logged_in %}
+    <p>{{10 * 2}}:: Logout</p>
+  {% else %}
+    <p>{{10 * 5}}:: Please login.</p>
+  {% endif %}
   
+  <p><strong>Current Time:</strong> {{ now }}</p>
+
   <!-- Below is jinja2 comment -->
   {# <p>{{10 * 5}}</p> #}
 {% endblock %}

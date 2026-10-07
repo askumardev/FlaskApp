@@ -32,9 +32,10 @@ app.register_blueprint(api_bp)
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
     now = datetime.now()
+    logged_in = True
     name = "Satish"
     courses = ["Flask", "Django", "FastAPI"]
-    return render_template("index.html", name=name, course="Flask", now=now, courses=courses)
+    return render_template("index.html", name=name, course="Flask", now=now, courses=courses, logged_in=logged_in)
 
 @app.route('/populate')
 def populate():

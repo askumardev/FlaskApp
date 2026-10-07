@@ -30,6 +30,10 @@ This is a Flask web application that demonstrates database models with relations
    ```
 
 2. Open your browser and go to `http://localhost:8000`
+3. to stop venv 
+ ```
+ deactivate venv
+ ```
 
 ## URLs and Pages
 

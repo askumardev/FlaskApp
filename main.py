@@ -31,7 +31,7 @@ app.register_blueprint(api_bp)
 # in the template for rendering.
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
-    now = datetime.now()
+    now = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
     logged_in = True
     name = "Satish"
     courses = ["Flask", "Django", "FastAPI"]

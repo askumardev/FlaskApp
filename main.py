@@ -136,6 +136,8 @@ def users_delete(id):
     db.session.commit()
     return redirect(url_for('users_index'))
 
+
+# *******************************************************************************
 # this route is just to show dynamic routing with a parameter, not part of CRUD
 # localhost:8000/user/raju
 @app.route('/user/<name>')
@@ -152,7 +154,28 @@ def student(name, course):
 # The requested URL was not found on the server. 
 # If you entered the URL manually please check your spelling and try again.
 
+# Accpting integer parameter
+@app.route('/article/<int:id>')
+def article(id):
+    return f"Article Id is: {id}."
 
+# Accpting float parameter
+@app.route('/price/<float:amount>')
+def price(amount):
+    return f"Price is: ${amount}."
+
+# Accpting string parameter
+@app.route('/product/<string:name>')
+def product(name):
+    return f"Product is: {name}."
+
+# path converter for file path, it will accept any text including slashes
+@app.route('/files/<path:file_name>')
+def files(file_name):
+    return f"File is: {file_name}."
+
+
+# *******************************************************************************
 
 # Posts CRUD
 @app.route('/posts')

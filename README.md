@@ -15,6 +15,11 @@ This is a Flask web application that demonstrates database models with relations
 1. Install Python dependencies:
    ```bash
    pip install -r requirements.txt
+
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install Flask
+   pip install Flask-SQLAlchemy
    ```
 
 ## Running the Application

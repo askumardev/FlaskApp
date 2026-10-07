@@ -5,7 +5,7 @@
   <h3>Course: {{ course }}</h3>
   <h4>Total Courses: {{courses | length}}</h4>
   {% if logged_in %}
-    <p>{{10 * 2}}:: Logout</p>
+    <p>{{10 * 2}}:: Logout</p> {# if | elif | else | endif #}
   {% else %}
     <p>{{10 * 5}}:: Please login.</p>
   {% endif %}

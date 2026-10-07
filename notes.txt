@@ -9,6 +9,7 @@ lower → converts text to lowercase
 title → capitalizes each word
 safe → marks a string as safe HTML
 default → sets a default value if variable is undefined
+length -> finds length
 
 <p>{{ username|upper }}</p>
 <p>{{ bio|default("No bio available") }}</p>

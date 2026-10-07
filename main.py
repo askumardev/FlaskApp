@@ -181,6 +181,16 @@ def files(file_name):
 def admin(uuid_str):
     return f"Admin UUID is: {uuid_str}."
 
+# search query parameter example, not part of CRUD
+# http://127.0.0.1:8000/search?name=flask
+# http://127.0.0.1:8000/search?name=rohit&age=30
+@app.route('/search')
+def search():
+    name = request.args.get('name', 'guest')
+    # age = request.args.get('age', 'unknown')  # optional parameter
+    # return f"Search query is: {name}, Age: {age}."
+    return f"Search query is: {name}."
+
 # *******************************************************************************
 
 # Posts CRUD

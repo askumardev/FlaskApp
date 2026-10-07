@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from db import db
+from uuid import UUID
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -174,6 +175,11 @@ def product(name):
 def files(file_name):
     return f"File is: {file_name}."
 
+# uuid converter for UUID, it will accept only valid UUIDs
+# http://127.0.0.1:8000/admin/3f8c2b6e-7a4d-4e9b-bc3a-8f2f9d4a1c7e
+@app.route('/admin/<uuid:uuid_str>')
+def admin(uuid_str):
+    return f"Admin UUID is: {uuid_str}."
 
 # *******************************************************************************
 

@@ -25,9 +25,13 @@ app.register_blueprint(api_bp)
 # def hello():
 #     return "<h1>Hello, World!</h1>"
 
+# Multiple variables can be passed to the template using render_template function.
+# You can pass any number of variables as keyword arguments, and they will be available 
+# in the template for rendering.
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
-    return render_template("index.html")
+    name = "Satish"
+    return render_template("index.html", name=name, course="Flask")
 
 @app.route('/populate')
 def populate():

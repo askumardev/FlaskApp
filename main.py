@@ -20,10 +20,14 @@ app.register_blueprint(api_bp)
 #       "History": 92
 #    }
 #    return render_template("index.html", marks=marks)
+
+# @app.route("/")
+# def hello():
+#     return "<h1>Hello, World!</h1>"
+
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
-
-   return render_template("pages/index.html")
+    return render_template("pages/index.html")
 
 @app.route('/populate')
 def populate():

@@ -1,0 +1,25 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<main class="container py-4">
+  <h1>Albums</h1>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+    {% for album in albums %}
+    <div class="col">
+      <article class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title h5">{{ album.title }}</h2>
+          <p class="card-text">Album ID: {{ album.id }}</p>
+          <p class="card-text">User ID: {{ album.userId }}</p>
+          <a class="btn btn-primary" href="{{ url_for('api.album_detail', album_id=album.id) }}">
+            View album
+          </a>
+        </div>
+      </article>
+    </div>
+    {% else %}
+    <p>No albums found.</p>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}

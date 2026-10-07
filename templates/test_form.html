@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<main class="container py-4">
+  <h1>Sample content form</h1>
+  <form method="post" action="{{ url_for('test_form') }}">
+    <div class="mb-3">
+      <label for="content" class="form-label">Content</label>
+      <textarea id="content" name="content" class="form-control" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Post content</button>
+  </form>
+
+  {% if posted_content is not none %}
+  <section class="mt-4" aria-live="polite">
+    <h2>Posted content</h2>
+    <pre class="border rounded bg-light p-3 text-break">{{ posted_content }}</pre>
+  </section>
+  {% endif %}
+</main>
+{% endblock %}

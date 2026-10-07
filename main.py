@@ -51,6 +51,11 @@ def hello_world():
         "state": "AP" }
     return render_template("index.html", name=name, course="Flask", now=now, courses=courses, logged_in=logged_in, details=details)
 
+@app.route("/test_form", methods=["GET", "POST"])
+def test_form():
+    posted_content = request.form.get("content") if request.method == "POST" else None
+    return render_template("test_form.html", posted_content=posted_content)
+
 @app.route('/populate')
 def populate():
     # Create sample data to play with associations (idempotent)

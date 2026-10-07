@@ -1,0 +1,15 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<main class="container py-4">
+  <h1>Album details</h1>
+  <article class="card">
+    <div class="card-body">
+      <h2 class="card-title">{{ album.title }}</h2>
+      <p class="card-text">Album ID: {{ album.id }}</p>
+      <p class="card-text">User ID: {{ album.userId }}</p>
+      <a class="btn btn-outline-primary" href="{{ url_for('api.albums') }}">Back to albums</a>
+    </div>
+  </article>
+</main>
+{% endblock %}

@@ -136,6 +136,24 @@ def users_delete(id):
     db.session.commit()
     return redirect(url_for('users_index'))
 
+# this route is just to show dynamic routing with a parameter, not part of CRUD
+# localhost:8000/user/raju
+@app.route('/user/<name>')
+def user(name):
+    return f"Hello, {name}!"
+
+# this route is just to show dynamic routing with multiple parameters, not part of CRUD
+# localhost:8000/student/raju/flask
+@app.route('/student/<name>/<course>')
+def student(name, course):
+    return f"Hello, {name}! You are enrolled in {course}."
+#if parammeter is not provided, it will show 404 error
+# Not Found
+# The requested URL was not found on the server. 
+# If you entered the URL manually please check your spelling and try again.
+
+
+
 # Posts CRUD
 @app.route('/posts')
 def posts_index():

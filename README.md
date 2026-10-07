@@ -20,6 +20,7 @@ This is a Flask web application that demonstrates database models with relations
    source .venv/bin/activate
    pip install Flask
    pip install Flask-SQLAlchemy
+   pip freeze > requirements.txt
    ```
 
 ## Running the Application

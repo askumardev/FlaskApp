@@ -1,8 +1,11 @@
-<nav>
-  <a href="{{ url_for('hello_world') }}">Home</a>
-  <a href="{{ url_for('users_index') }}">Users</a> |
-  <a href="/posts">Posts</a>
-  <a href="/comments">Comments</a>
-  <a href="/populate">Populate Data</a>
-  <a href="/data">Data (JSON)</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+    <div class="navbar-nav">
+      <a class="navbar-brand" href="{{ url_for('hello_world') }}">Home</a>
+      <a class="nav-link" href="{{ url_for('users_index') }}">Users</a>
+      <a class="nav-link" href="/posts">Posts</a>
+      <a class="nav-link" href="/comments">Comments</a>
+      <a class="nav-link" href="/populate">Populate Data</a>
+      <a class="nav-link" href="/data">Data (JSON)</a>
+    </div>
 </nav>

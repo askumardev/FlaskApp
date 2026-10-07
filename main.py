@@ -29,6 +29,12 @@ app.register_blueprint(api_bp)
 # Multiple variables can be passed to the template using render_template function.
 # You can pass any number of variables as keyword arguments, and they will be available 
 # in the template for rendering.
+
+@app.route("/home")
+def home():
+    return render_template("home.html")
+
+
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
     now = datetime.now().strftime("%d-%m-%Y %H:%M:%S")

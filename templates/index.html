@@ -1,4 +1,6 @@
+<div class="container">
 {% extends 'layouts/base.html' %}
+
 
 {% block content %}
   <h2>{{"Hello " + name | upper}}! Welcome to Home</h2>
@@ -15,8 +17,9 @@
   {% for k,v in details.items() %}
     <p><strong>{{ k | title }}:</strong> {{ v }}</p>
   {% endfor %}
-  <button id="myButton" onclick="showMsg()">Click Me</button>
+  <button id="myButton" class="btn btn-primary" onclick="showMsg()">Click Me</button>
 
   <!-- Below is jinja2 comment -->
   {# <p>{{10 * 5}}</p> #}
 {% endblock %}
+</div>

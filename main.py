@@ -34,6 +34,10 @@ app.register_blueprint(api_bp)
 def home():
     return render_template("home.html")
 
+@app.route("/tail_home")
+def tail_home():
+    return render_template("tail_home.html")
+
 
 @app.route("/", methods=["GET", "POST"])
 def hello_world():

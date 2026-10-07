@@ -3,11 +3,14 @@ from . import api_bp
 from models import Category
 from db import db
 
+# http://127.0.0.1:8000/api/categories
 @api_bp.route('/categories', methods=['GET'])
 def get_categories():
     categories = Category.query.all()
     return jsonify([{'id': c.id, 'name': c.name, 'description': c.description} for c in categories])
 
+
+# http://127.0.0.1:8000/api/categories/1
 @api_bp.route('/categories/<int:id>', methods=['GET'])
 def get_category(id):
     c = Category.query.get_or_404(id)

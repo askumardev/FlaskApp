@@ -14,9 +14,23 @@
   
   <p><strong>Current Time:</strong> {{ now }}</p>
   <hr>
-  {% for k,v in details.items() %}
-    <p><strong>{{ k | title }}:</strong> {{ v }}</p>
-  {% endfor %}
+  <h3>Details:</h3>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Detail</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for k,v in details.items() %}
+      <tr>
+        <th scope="row">{{ k | title }}</th>
+        <td>{{ v }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   <button id="myButton" class="btn btn-primary" onclick="showMsg()">Click Me</button>
 
   <!-- Below is jinja2 comment -->

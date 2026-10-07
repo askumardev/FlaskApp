@@ -35,7 +35,11 @@ def hello_world():
     logged_in = True
     name = "Satish"
     courses = ["Flask", "Django", "FastAPI"]
-    return render_template("index.html", name=name, course="Flask", now=now, courses=courses, logged_in=logged_in)
+    details = {
+        "name": "satish",
+        "course": "Flask",
+        "state": "AP" }
+    return render_template("index.html", name=name, course="Flask", now=now, courses=courses, logged_in=logged_in, details=details)
 
 @app.route('/populate')
 def populate():

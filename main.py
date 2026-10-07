@@ -27,7 +27,7 @@ app.register_blueprint(api_bp)
 
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
-    return render_template("pages/index.html")
+    return render_template("index.html")
 
 @app.route('/populate')
 def populate():

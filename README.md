@@ -14,6 +14,8 @@ This is a Flask web application that demonstrates database models with relations
 
 1. Install Python dependencies:
    ```bash
+   sudo apt update
+   sudo apt install python3-pip
    pip install -r requirements.txt
 
    python3 -m venv .venv

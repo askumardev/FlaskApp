@@ -16,12 +16,12 @@ This is a Flask web application that demonstrates database models with relations
    ```bash
    sudo apt update
    sudo apt install python3-pip
-   pip install -r requirements.txt
 
    python3 -m venv .venv
    source .venv/bin/activate
    pip install Flask
    pip install Flask-SQLAlchemy
+   pip install -r requirements.txt
    pip freeze > requirements.txt
    ```
 

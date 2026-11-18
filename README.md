@@ -27,13 +27,16 @@ This is a Flask web application that demonstrates database models with relations
 
 ## Running the Application
 
-1. Run the Flask app:
+1. First activate venv
+source venv/bin/activate
+
+2. Run the Flask app:
    ```bash
    python main.py
    ```
 
-2. Open your browser and go to `http://localhost:8000`
-3. to stop venv run below
+3. Open your browser and go to `http://localhost:8000`
+4. to stop venv run below
  ```
  deactivate venv
  ```

@@ -1,11 +1,12 @@
 from datetime import datetime
-from flask import Flask, flash, render_template, request, jsonify, redirect, url_for
+from flask import Flask, flash,session, render_template, request, jsonify, redirect, url_for
 from db import db
 from uuid import UUID
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'  # Replace with a secure key in production
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-app.config['SECRET_KEY'] = 'your_secret_key_here'
+app.config['SECRET_KEY'] = 'add_secret_key_here'
 db.init_app(app)
 app.errorhandler(404)
 
@@ -48,6 +49,22 @@ def test500():
 @app.route("/home")
 def home():
     return render_template("home.html")
+
+
+@app.route("/login")
+def login():
+    session['username'] = 'Satish'
+    return "Login successful!"
+
+@app.route("/dashboard")
+def dashboard():
+    username = session.get('username')
+    return f"Welcome to the dashboard, {username}!"
+
+@app.route("/logout")
+def logout():
+    session.pop('username', None)
+    return "You have been logged out."
 
 @app.route("/tail_home")
 def tail_home():

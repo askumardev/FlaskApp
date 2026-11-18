@@ -1,12 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    
-    <div class="navbar-nav">
-      <a class="navbar-brand" href="{{ url_for('hello_world') }}">Home</a>
-      <a class="nav-link" href="{{ url_for('users_index') }}">Users</a>
-      <a class="nav-link" href="/posts">Posts</a>
-      <a class="nav-link" href="/comments">Comments</a>
-      <a class="nav-link" href="/populate">Populate Data</a>
-      <a class="nav-link" href="/data">Data (JSON)</a>
-      <a class="nav-link" href="{{ url_for('api.albums') }}">Albums</a>
-    </div>
+  <div class="navbar-nav">
+    <a class="navbar-brand" href="{{ url_for('hello_world') }}">Home</a>
+    <a class="nav-link" href="{{ url_for('users_index') }}">Users</a>
+    <a class="nav-link" href="/posts">Posts</a>
+    <a class="nav-link" href="/comments">Comments</a>
+    <a class="nav-link" href="/populate">Populate Data</a>
+    <a class="nav-link" href="/data">Data (JSON)</a>
+    <a class="nav-link" href="{{ url_for('api.albums') }}">Albums</a>
+  </div>
 </nav>

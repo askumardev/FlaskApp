@@ -19,6 +19,15 @@ app.register_blueprint(api_bp)
 def page_not_found(error):
     return render_template("404.html", hide_header_links=True), 404
 
+@app.errorhandler(500)
+def internal_server_error(error):
+    return render_template("500.html", hide_header_links=True), 500
+
+@app.route("/test500")
+def test500():
+    res = 10 / 0  # This will raise a ZeroDivisionError
+    return str(res)
+
 # @app.route("/", methods=["GET", "POST"])
 # def hello_world():
 #    marks = {
@@ -338,3 +347,4 @@ if __name__ == '__main__':
             except Exception as e:
                 print('Migration ignored (maybe already present or unsupported):', str(e))
     app.run(port=8000, debug=True)
+    # app.run(port=8000, debug=False) 

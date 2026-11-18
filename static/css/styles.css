@@ -37,3 +37,14 @@ footer {
 .container {
     padding: 20px;
 }
+
+.not-found-page {
+    max-width: 720px;
+}
+
+.not-found-illustration {
+    display: block;
+    width: min(100%, 400px);
+    height: auto;
+    margin: 0 auto;
+}

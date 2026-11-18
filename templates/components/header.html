@@ -2,4 +2,6 @@
   <h1>My App</h1>
   <hr>
 </header>
-{% include 'components/navbar.html' %}
+{% if not hide_header_links|default(false) %}
+  {% include 'components/navbar.html' %}
+{% endif %}

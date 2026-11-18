@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, flash, render_template, request, jsonify, redirect, url_for
 from db import db
 from uuid import UUID
 
@@ -7,11 +7,17 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 db.init_app(app)
+app.errorhandler(404)
+
 
 from models import User, Post, Comment, Category
 from api import api_bp
 
 app.register_blueprint(api_bp)
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("404.html", hide_header_links=True), 404
 
 # @app.route("/", methods=["GET", "POST"])
 # def hello_world():
@@ -54,6 +60,11 @@ def hello_world():
 @app.route("/test_form", methods=["GET", "POST"])
 def test_form():
     posted_content = request.form.get("content") if request.method == "POST" else None
+    if request.method == "POST":
+        if not posted_content or not posted_content.strip():
+            flash("Please enter some content before submitting.", "warning")
+        else:
+            flash("Message successfully posted...", "success")
     return render_template("test_form.html", posted_content=posted_content)
 
 @app.route('/populate')

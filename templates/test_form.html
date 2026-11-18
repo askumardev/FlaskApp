@@ -12,6 +12,11 @@
   </form>
 
   {% if posted_content is not none %}
+  {% with posted_conteent = get_flashed_messages() %}
+  <div class="alert alert-success mt-4" role="alert">
+    <h6>message successfully posted</h6>
+  </div>
+  {% endwith %}
   <section class="mt-4" aria-live="polite">
     <h2>Posted content</h2>
     <pre class="border rounded bg-light p-3 text-break">{{ posted_content }}</pre>
